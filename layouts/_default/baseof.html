@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
-    {{- partial "header.html" . -}}
-    <body>
-        <div class="content">
+{{- partial "header.html" . -}}
+
+<body>
+    <div class="content">
         {{- partial "head.html" . -}}
+        <div class="site-description">
+            {{- if isset .Site.Params "subtitle" -}}
+            <p>{{ .Site.Params.Subtitle | .Page.RenderString }}</p>
+            {{- end -}}
+        </div>
         {{- block "main" . }}{{- end }}
         {{- partial "footer.html" . -}}
-        </div>
-    </body>
+    </div>
+</body>
+
 </html>
