@@ -45,3 +45,6 @@ weight = 3
 name = "Tags"
 url = "/tags"
 weight = 4
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]

@@ -1,0 +1,23 @@
+[
+  {{- $scratch := newScratch }}
+  {{- $scratch.Add "items" slice }}
+  {{- range .Site.RegularPages }}
+    {{- $scratch.Add "items" (dict
+      "title" .Title
+      "permalink" .Permalink
+      "summary" .Summary
+      "date" (.Date.Format "2006-01-02")
+      "tags" .Params.tags
+    ) }}
+  {{- end }}
+  {{- range $index, $item := ($scratch.Get "items") }}
+    {{- if gt $index 0 }},{{ end }}
+    {
+      "title": {{ .title | jsonify }},
+      "permalink": {{ .permalink | jsonify }},
+      "summary": {{ .summary | jsonify }},
+      "date": {{ .date | jsonify }},
+      "tags": {{ .tags | jsonify }}
+    }
+  {{- end }}
+]

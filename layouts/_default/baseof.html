@@ -10,6 +10,11 @@
             <p>{{ .Site.Params.Subtitle | .Page.RenderString }}</p>
             {{- end -}}
         </div>
+
+        <section class="search-container">
+            {{ partial "search.html" . }}
+        </section>
+
         {{- block "main" . }}{{- end }}
         {{- partial "footer.html" . -}}
     </div>
